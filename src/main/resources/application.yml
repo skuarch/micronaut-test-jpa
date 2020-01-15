@@ -1,3 +1,28 @@
 micronaut:
   application:
     name: micronaut-test-jpa
+
+datasources:
+  default:
+    url: 'jdbc:postgresql://localhost:5432/radio'
+    username: 'postgres'
+    password: 'dragon3s12'
+    driverClassName: 'org.postgresql.Driver'
+    dialect: Postgresql
+
+jpa:
+  default:
+    packages-to-scan:
+      - 'micronaut.test.jpa.model.entity'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+
+flyway:
+  datasources:
+    default:
+      locations: classpath:db/migration
+      defaultSchema: 'public'
+
